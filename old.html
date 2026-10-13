@@ -1,0 +1,843 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>D' Primera RY SRL | Soluciones Tecnológicas Corporativas</title>
+    <!-- Fuente moderna para entorno tecnológico -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+    <!-- Iconos FontAwesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            /* Paleta de colores corporativa y tecnológica */
+            --primary-color: #E65100; /* Naranja del logo */
+            --primary-hover: #BF360C;
+            --dark-bg: #0F172A; /* Azul pizarra oscuro para toque tech */
+            --dark-bg-light: #1E293B;
+            --text-main: #334155;
+            --text-light: #64748B;
+            --bg-light: #F8FAFC;
+            --white: #FFFFFF;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Inter', sans-serif;
+        }
+
+        /* Desplazamiento suave en toda la página */
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            color: var(--text-main);
+            line-height: 1.6;
+            background-color: var(--white);
+            overflow-x: hidden;
+        }
+
+        /* --- Animaciones de Scroll (Scroll Reveal) --- */
+        .animate-on-scroll {
+            opacity: 0;
+            transform: translateY(40px);
+            transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+        }
+
+        .animate-on-scroll.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* --- Header Corporativo --- */
+        header {
+            background-color: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 15px 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo-container {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            text-decoration: none;
+        }
+
+        .logo-img {
+            height: 45px;
+            width: auto;
+            object-fit: contain;
+        }
+
+        .company-name {
+            font-weight: 800;
+            font-size: 1.3rem;
+            color: var(--primary-color); 
+            letter-spacing: -0.5px;
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+            gap: 25px;
+        }
+
+        nav a {
+            text-decoration: none;
+            color: var(--primary-color);
+            font-weight: 600;
+            font-size: 0.95rem;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        nav a::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: -5px;
+            left: 0;
+            background-color: var(--primary-color);
+            transition: width 0.3s;
+        }
+
+        nav a:hover::after {
+            width: 100%;
+        }
+
+        .btn-primary {
+            background-color: var(--primary-color);
+            color: var(--white);
+            padding: 12px 24px;
+            border-radius: 6px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            border: none;
+            cursor: pointer;
+            box-shadow: 0 4px 6px rgba(230, 81, 0, 0.2);
+            display: inline-block;
+        }
+
+        .btn-primary:hover {
+            background-color: var(--primary-hover);
+            transform: translateY(-3px) scale(1.02);
+            box-shadow: 0 8px 15px rgba(230, 81, 0, 0.4);
+        }
+
+        /* --- Hero Section Moderna --- */
+        .hero {
+            background: linear-gradient(135deg, var(--dark-bg) 0%, #1a2333 100%);
+            padding: 120px 20px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background-image: radial-gradient(circle at 20% 50%, rgba(230, 81, 0, 0.15) 0%, transparent 50%),
+                              radial-gradient(circle at 80% 80%, rgba(230, 81, 0, 0.15) 0%, transparent 50%);
+            pointer-events: none;
+            animation: pulseGlow 8s infinite alternate;
+        }
+
+        @keyframes pulseGlow {
+            0% { opacity: 0.5; }
+            100% { opacity: 1; }
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 1;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .hero h1 {
+            font-size: 3rem;
+            font-weight: 800;
+            margin-bottom: 20px;
+            color: var(--white);
+            line-height: 1.2;
+        }
+
+        .hero h1 span {
+            color: var(--primary-color);
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            color: #CBD5E1;
+            margin-bottom: 40px;
+        }
+
+        /* --- Secciones Generales --- */
+        .section-padding {
+            padding: 80px 20px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 2.2rem;
+            font-weight: 800;
+            margin-bottom: 50px;
+            color: var(--dark-bg);
+        }
+
+        .section-title span {
+            color: var(--primary-color);
+        }
+
+        /* --- Sobre Nosotros (Organización) --- */
+        .about-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 50px;
+            align-items: center;
+        }
+
+        .about-text h3 {
+            font-size: 1.8rem;
+            color: var(--dark-bg);
+            margin-bottom: 20px;
+        }
+
+        .about-text p {
+            margin-bottom: 15px;
+            font-size: 1.05rem;
+        }
+
+        .about-stats {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+        }
+
+        .stat-item {
+            background: var(--bg-light);
+            padding: 30px;
+            border-radius: 10px;
+            text-align: center;
+            border-left: 4px solid var(--primary-color);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .stat-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.05);
+        }
+
+        .stat-item h4 {
+            font-size: 2rem;
+            color: var(--primary-color);
+            margin-bottom: 5px;
+        }
+
+        /* --- Valores --- */
+        .values-section {
+            background-color: var(--bg-light);
+        }
+
+        .values-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+        }
+
+        .value-card {
+            background: var(--white);
+            padding: 40px 30px;
+            border-radius: 10px;
+            text-align: center;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .value-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.1);
+        }
+
+        .value-icon {
+            font-size: 2.5rem;
+            color: var(--primary-color);
+            margin-bottom: 20px;
+        }
+
+        .value-card h4 {
+            font-size: 1.3rem;
+            margin-bottom: 15px;
+            color: var(--dark-bg);
+        }
+
+        /* --- Servicios --- */
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 30px;
+        }
+
+        .service-card {
+            background: var(--white);
+            border: 1px solid #E2E8F0;
+            border-radius: 10px;
+            padding: 35px;
+            transition: all 0.4s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .service-card::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; width: 100%; height: 4px;
+            background-color: var(--primary-color);
+            transform: scaleX(0);
+            transform-origin: left;
+            transition: transform 0.4s ease;
+        }
+
+        .service-card:hover::before {
+            transform: scaleX(1);
+        }
+
+        .service-card:hover {
+            box-shadow: 0 15px 30px -5px rgba(0, 0, 0, 0.1);
+            border-color: transparent;
+            transform: translateY(-5px);
+        }
+
+        .service-icon {
+            font-size: 2.5rem;
+            color: var(--primary-color);
+            margin-bottom: 20px;
+            transition: transform 0.3s ease;
+        }
+
+        .service-card:hover .service-icon {
+            transform: scale(1.1);
+        }
+
+        .service-card h3 {
+            font-size: 1.2rem;
+            margin-bottom: 15px;
+            color: var(--dark-bg);
+        }
+
+        /* --- NUEVA SECCIÓN: Tecnologías de Punta --- */
+        .tech-section {
+            background-color: var(--dark-bg);
+            color: var(--white);
+            padding: 80px 20px;
+        }
+
+        .tech-section .section-title {
+            color: var(--white);
+            margin-bottom: 20px;
+        }
+
+        .tech-subtitle {
+            text-align: center;
+            color: #94A3B8;
+            font-size: 1.1rem;
+            max-width: 700px;
+            margin: 0 auto 50px auto;
+        }
+
+        .tech-grid {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 25px;
+        }
+
+        .tech-card {
+            background-color: var(--dark-bg-light);
+            border: 1px solid #334155;
+            border-radius: 10px;
+            padding: 30px;
+            transition: border-color 0.4s ease, transform 0.4s ease, box-shadow 0.4s ease;
+        }
+
+        .tech-card:hover {
+            border-color: var(--primary-color);
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(230, 81, 0, 0.15);
+        }
+
+        .tech-card h4 {
+            color: var(--white);
+            font-size: 1.2rem;
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .tech-card h4 i {
+            color: var(--primary-color);
+        }
+
+        .tech-list {
+            list-style: none;
+        }
+
+        .tech-list li {
+            color: #CBD5E1;
+            font-size: 0.95rem;
+            padding: 10px 0;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            border-bottom: 1px solid #1E293B;
+            transition: color 0.3s ease;
+        }
+
+        .tech-list li:hover {
+            color: var(--white);
+        }
+
+        .tech-list li:last-child {
+            border-bottom: none;
+        }
+
+        .tech-list li i {
+            color: var(--primary-color);
+            width: 20px;
+            text-align: center;
+        }
+
+        /* --- Contacto y Socios --- */
+        .contact-section {
+            background-color: var(--bg-light);
+            text-align: center;
+            padding-bottom: 100px;
+        }
+
+        .contact-info {
+            display: flex;
+            justify-content: center;
+            gap: 50px;
+            flex-wrap: wrap;
+            margin-top: 40px;
+            margin-bottom: 80px; /* Espacio para separar de los socios */
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            font-size: 1.2rem;
+            font-weight: 600;
+            background: var(--white);
+            padding: 20px 30px;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .contact-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+        }
+
+        .contact-item i {
+            color: var(--primary-color);
+            font-size: 1.8rem;
+        }
+
+        .contact-item a {
+            color: var(--dark-bg);
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .contact-item a:hover {
+            color: var(--primary-color);
+        }
+
+        /* --- Sección Socios Fundadores --- */
+        .founders-container {
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .founders-title {
+            font-size: 1.8rem;
+            color: var(--dark-bg);
+            margin-bottom: 40px;
+            text-align: center;
+        }
+
+        .founders-title span {
+            color: var(--primary-color);
+        }
+
+        .founders-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+        }
+
+        .founder-card {
+            background: var(--white);
+            padding: 40px 30px;
+            border-radius: 12px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+            text-align: center;
+            border-bottom: 4px solid var(--primary-color);
+            transition: transform 0.3s ease;
+        }
+
+        .founder-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .founder-avatar {
+            width: 100px;
+            height: 100px;
+            background-color: #FFF3E0;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin: 0 auto 20px auto;
+            font-size: 3rem;
+            color: var(--primary-color);
+            border: 3px solid var(--primary-color);
+        }
+
+        .founder-card h4 {
+            font-size: 1.4rem;
+            color: var(--dark-bg);
+            margin-bottom: 5px;
+        }
+
+        .founder-role {
+            font-size: 0.9rem;
+            color: var(--primary-color);
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 15px;
+        }
+
+        .founder-bio {
+            font-size: 0.95rem;
+            color: var(--text-light);
+        }
+
+        /* --- Footer --- */
+        footer {
+            background-color: var(--dark-bg-light);
+            color: #94A3B8;
+            padding: 40px 20px;
+            text-align: center;
+            font-size: 0.9rem;
+        }
+
+        /* --- Responsive --- */
+        @media (max-width: 900px) {
+            .about-grid {
+                grid-template-columns: 1fr;
+            }
+            .founders-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .nav-container {
+                flex-direction: column;
+                gap: 15px;
+            }
+            nav ul {
+                gap: 15px;
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+            .hero h1 {
+                font-size: 2.2rem;
+            }
+            .contact-info {
+                flex-direction: column;
+                gap: 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Header -->
+    <header>
+        <div class="nav-container">
+            <a href="#" class="logo-container">
+                <img src="assets/logo.png" alt="D' Primera RY" class="logo-img">
+                <span class="company-name">D' Primera RY</span>
+            </a>
+            <nav>
+                <ul>
+                    <li><a href="#nosotros">Nosotros</a></li>
+                    <li><a href="#valores">Valores</a></li>
+                    <li><a href="#servicios">Servicios</a></li>
+                    <li><a href="#tecnologias">Tecnologías</a></li>
+                    <li><a href="#contacto">Contacto</a></li>
+                </ul>
+            </nav>
+            <!-- Botón "Cotizar Ahora" eliminado según lo solicitado -->
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-content">
+            <h1 class="animate-on-scroll">Servicios tecnológicos de <span>primera mano</span>.<br>Tu primera opción.</h1>
+            <p class="animate-on-scroll" style="transition-delay: 0.1s;">Impulsamos la transformación digital de tu empresa con software a medida, infraestructura robusta y soluciones administrativas de alto nivel.</p>
+            <a href="https://wa.me/59154719486?text=Hola%20quiero%20saber%20de%20D%27Primera" target="_blank" class="btn-primary animate-on-scroll" style="font-size: 1.1rem; padding: 16px 36px; transition-delay: 0.2s;">Solicitar Información</a>
+        </div>
+    </section>
+
+    <!-- Sección Organización / Sobre Nosotros -->
+    <section id="nosotros" class="section-padding">
+        <h2 class="section-title animate-on-scroll">Nuestra <span>Organización</span></h2>
+        <div class="about-grid">
+            <div class="about-text animate-on-scroll">
+                <h3>Expertos en soluciones integrales</h3>
+                <p>En <strong>D' Primera RY SRL</strong> somos una empresa dedicada a brindar soluciones tecnológicas integrales. Nos especializamos en entender las necesidades específicas de cada cliente para desarrollar herramientas que optimicen sus procesos y aumenten su productividad.</p>
+                <p>Contamos con un equipo multidisciplinario de profesionales apasionados por la tecnología, listos para acompañar a su empresa en cada etapa de su crecimiento digital.</p>
+            </div>
+            <div class="about-stats animate-on-scroll" style="transition-delay: 0.2s;">
+                <div class="stat-item">
+                    <h4>+20</h4>
+                    <p>Proyectos Entregados</p>
+                </div>
+                <div class="stat-item">
+                    <h4>24/7</h4>
+                    <p>Soporte Técnico</p>
+                </div>
+                <div class="stat-item">
+                    <h4>100%</h4>
+                    <p>Soluciones a Medida</p>
+                </div>
+                <div class="stat-item">
+                    <h4>+5</h4>
+                    <p>Años de Experiencia</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Sección Valores -->
+    <section id="valores" class="section-padding values-section">
+        <h2 class="section-title animate-on-scroll">Nuestros <span>Valores</span></h2>
+        <div class="values-grid">
+            <div class="value-card animate-on-scroll">
+                <div class="value-icon"><i class="fa-solid fa-lightbulb"></i></div>
+                <h4>Innovación</h4>
+                <p>Buscamos constantemente nuevas tecnologías para ofrecer soluciones vanguardistas y eficientes.</p>
+            </div>
+            <div class="value-card animate-on-scroll" style="transition-delay: 0.1s;">
+                <div class="value-icon"><i class="fa-solid fa-handshake"></i></div>
+                <h4>Compromiso</h4>
+                <p>Nos involucramos al 100% con los objetivos de nuestros clientes, trabajando como un socio estratégico.</p>
+            </div>
+            <div class="value-card animate-on-scroll" style="transition-delay: 0.2s;">
+                <div class="value-icon"><i class="fa-solid fa-shield-halved"></i></div>
+                <h4>Seguridad</h4>
+                <p>Protegemos la información y los activos digitales de su empresa con los más altos estándares.</p>
+            </div>
+            <div class="value-card animate-on-scroll" style="transition-delay: 0.3s;">
+                <div class="value-icon"><i class="fa-solid fa-medal"></i></div>
+                <h4>Excelencia</h4>
+                <p>Garantizamos calidad en cada línea de código, cada red instalada y cada equipo reparado.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Sección Servicios -->
+    <section id="servicios" class="section-padding">
+        <h2 class="section-title animate-on-scroll">Catálogo de <span>Servicios</span></h2>
+        <div class="services-grid">
+            <!-- Servicio 1 -->
+            <div class="service-card animate-on-scroll">
+                <div class="service-icon"><i class="fa-solid fa-laptop-code"></i></div>
+                <h3>1. Desarrollo de Software y Aplicaciones a la medida</h3>
+                <p>Soluciones personalizadas para sus necesidades específicas, adaptadas al flujo de trabajo de su empresa.</p>
+            </div>
+            <!-- Servicio 2 -->
+            <div class="service-card animate-on-scroll" style="transition-delay: 0.1s;">
+                <div class="service-icon"><i class="fa-solid fa-chart-line"></i></div>
+                <h3>2. Sistemas de Análisis</h3>
+                <p>Inteligencia de negocios y visualización de datos para tomar decisiones estratégicas basadas en información real.</p>
+            </div>
+            <!-- Servicio 3 -->
+            <div class="service-card animate-on-scroll" style="transition-delay: 0.2s;">
+                <div class="service-icon"><i class="fa-solid fa-briefcase"></i></div>
+                <h3>3. Venta de Sistemas de Gestión para Actores Económicos</h3>
+                <p>Optimización administrativa y herramientas contables/financieras diseñadas para el sector económico.</p>
+            </div>
+            <!-- Servicio 4 -->
+            <div class="service-card animate-on-scroll">
+                <div class="service-icon"><i class="fa-solid fa-screwdriver-wrench"></i></div>
+                <h3>4. Mantenimiento y Atención de Computadoras</h3>
+                <p>Soporte técnico preventivo y correctivo para mantener sus equipos operando al máximo rendimiento.</p>
+            </div>
+            <!-- Servicio 5 -->
+            <div class="service-card animate-on-scroll" style="transition-delay: 0.1s;">
+                <div class="service-icon"><i class="fa-solid fa-network-wired"></i></div>
+                <h3>5. Gestión y Administración de Redes y Servidores</h3>
+                <p>Infraestructura robusta y segura. Nos encargamos de que su conectividad y datos estén siempre protegidos.</p>
+            </div>
+            <!-- Servicio 6 -->
+            <div class="service-card animate-on-scroll" style="transition-delay: 0.2s;">
+                <div class="service-icon"><i class="fa-solid fa-print"></i></div>
+                <h3>6. Servicios de Impresión</h3>
+                <p>Impresión de alta calidad y soluciones de copiado para todas las necesidades documentales de su oficina.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Sección Tecnologías de Punta -->
+    <section id="tecnologias" class="tech-section">
+        <h2 class="section-title animate-on-scroll">Tecnologías <span>de Punta</span></h2>
+        <p class="tech-subtitle animate-on-scroll">Trabajamos con tecnologías de punta para garantizar las mejores soluciones en cada área de servicio.</p>
+        
+        <div class="tech-grid">
+            <!-- Software -->
+            <div class="tech-card animate-on-scroll">
+                <h4><i class="fa-solid fa-code"></i> Desarrollo de Software</h4>
+                <ul class="tech-list">
+                    <li><i class="fa-brands fa-react"></i> React & Next.js</li>
+                    <li><i class="fa-brands fa-node-js"></i> Node.js & Python</li>
+                    <li><i class="fa-solid fa-database"></i> PostgreSQL / MongoDB</li>
+                    <li><i class="fa-brands fa-docker"></i> Docker & Kubernetes</li>
+                </ul>
+            </div>
+
+            <!-- Análisis e IA -->
+            <div class="tech-card animate-on-scroll" style="transition-delay: 0.1s;">
+                <h4><i class="fa-solid fa-brain"></i> Sistemas de Análisis</h4>
+                <ul class="tech-list">
+                    <li><i class="fa-solid fa-robot"></i> Inteligencia Artificial (IA)</li>
+                    <li><i class="fa-solid fa-chart-pie"></i> Power BI & Tableau</li>
+                    <li><i class="fa-solid fa-cloud"></i> Big Data en la Nube</li>
+                    <li><i class="fa-solid fa-gears"></i> Machine Learning</li>
+                </ul>
+            </div>
+
+            <!-- Gestión -->
+            <div class="tech-card animate-on-scroll" style="transition-delay: 0.2s;">
+                <h4><i class="fa-solid fa-chart-simple"></i> Sistemas de Gestión</h4>
+                <ul class="tech-list">
+                    <li><i class="fa-solid fa-layer-group"></i> ERPs a Medida</li>
+                    <li><i class="fa-brands fa-salesforce"></i> CRM & Salesforce</li>
+                    <li><i class="fa-solid fa-link"></i> Integración APIs REST</li>
+                    <li><i class="fa-solid fa-shield"></i> Seguridad Blockchain</li>
+                </ul>
+            </div>
+
+            <!-- Mantenimiento -->
+            <div class="tech-card animate-on-scroll">
+                <h4><i class="fa-solid fa-microchip"></i> Mantenimiento TI</h4>
+                <ul class="tech-list">
+                    <li><i class="fa-brands fa-windows"></i> Windows & macOS</li>
+                    <li><i class="fa-brands fa-linux"></i> Linux</li>
+                    <li><i class="fa-solid fa-wrench"></i> Diagnóstico Automatizado</li>
+                    <li><i class="fa-solid fa-hard-drive"></i> Recuperación de Datos SSD</li>
+                </ul>
+            </div>
+
+            <!-- Redes -->
+            <div class="tech-card animate-on-scroll" style="transition-delay: 0.1s;">
+                <h4><i class="fa-solid fa-server"></i> Redes y Servidores</h4>
+                <ul class="tech-list">
+                    <li><i class="fa-brands fa-aws"></i> AWS / Azure Cloud</li>
+                    <li><i class="fa-solid fa-network-wired"></i> Cisco & Fortinet</li>
+                    <li><i class="fa-solid fa-lock"></i> Ciberseguridad Avanzada</li>
+                    <li><i class="fa-solid fa-wifi"></i> Redes Mesh & VLANs</li>
+                </ul>
+            </div>
+
+            <!-- Impresión -->
+            <div class="tech-card animate-on-scroll" style="transition-delay: 0.2s;">
+                <h4><i class="fa-solid fa-print"></i> Impresión y Digitalización</h4>
+                <ul class="tech-list">
+                    <li><i class="fa-solid fa-camera"></i> Impresión de Fotos</li>
+                    <li><i class="fa-solid fa-file-pdf"></i> Gestión Documental Digital</li>
+                    <li><i class="fa-solid fa-bolt"></i> Equipos de Alta Velocidad</li>
+                    <li><i class="fa-solid fa-palette"></i> Calibración de Color Profesional</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <!-- Sección Contacto y Socios -->
+    <section id="contacto" class="section-padding contact-section">
+        <h2 class="section-title animate-on-scroll">Contácte<span>nos</span></h2>
+        <p class="animate-on-scroll" style="color: var(--text-light); margin-bottom: 20px; font-size: 1.1rem;">Estamos listos para atender sus necesidades tecnológicas.</p>
+        
+        <div class="contact-info animate-on-scroll" style="transition-delay: 0.1s;">
+            <div class="contact-item">
+                <i class="fa-solid fa-phone"></i>
+                <a href="tel:54719486">54719486</a>
+            </div>
+            <div class="contact-item">
+                <i class="fa-brands fa-whatsapp" style="color: #25D366;"></i>
+                <a href="https://wa.me/59154719486?text=Hola%20quiero%20saber%20de%20D%27Primera" target="_blank">59159864</a>
+            </div>
+        </div>
+
+       
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2023 D' Primera RY SRL. Todos los derechos reservados.</p>
+        <p>Servicios tecnológicos de primera mano. Tu primera opción.</p>
+    </footer>
+
+    <!-- Script para Animaciones de Scroll (Intersection Observer) -->
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            const animatedElements = document.querySelectorAll('.animate-on-scroll');
+
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('visible');
+                    }
+                });
+            }, {
+                threshold: 0.1,
+                rootMargin: "0px 0px -50px 0px"
+            });
+
+            animatedElements.forEach(element => {
+                observer.observe(element);
+            });
+        });
+    </script>
+</body>
+</html>

@@ -1,843 +1,684 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>D' Primera RY SRL | Soluciones Tecnológicas Corporativas</title>
-    <!-- Fuente moderna para entorno tecnológico -->
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&display=swap" rel="stylesheet">
-    <!-- Iconos FontAwesome -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <style>
-        :root {
-            /* Paleta de colores corporativa y tecnológica */
-            --primary-color: #E65100; /* Naranja del logo */
-            --primary-hover: #BF360C;
-            --dark-bg: #0F172A; /* Azul pizarra oscuro para toque tech */
-            --dark-bg-light: #1E293B;
-            --text-main: #334155;
-            --text-light: #64748B;
-            --bg-light: #F8FAFC;
-            --white: #FFFFFF;
-        }
-
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family: 'Inter', sans-serif;
-        }
-
-        /* Desplazamiento suave en toda la página */
-        html {
-            scroll-behavior: smooth;
-        }
-
-        body {
-            color: var(--text-main);
-            line-height: 1.6;
-            background-color: var(--white);
-            overflow-x: hidden;
-        }
-
-        /* --- Animaciones de Scroll (Scroll Reveal) --- */
-        .animate-on-scroll {
-            opacity: 0;
-            transform: translateY(40px);
-            transition: opacity 0.8s ease-out, transform 0.8s ease-out;
-        }
-
-        .animate-on-scroll.visible {
-            opacity: 1;
-            transform: translateY(0);
-        }
-
-        /* --- Header Corporativo --- */
-        header {
-            background-color: rgba(255, 255, 255, 0.95);
-            backdrop-filter: blur(10px);
-            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
-            position: sticky;
-            top: 0;
-            z-index: 1000;
-        }
-
-        .nav-container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 15px 20px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-
-        .logo-container {
-            display: flex;
-            align-items: center;
-            gap: 15px;
-            text-decoration: none;
-        }
-
-        .logo-img {
-            height: 45px;
-            width: auto;
-            object-fit: contain;
-        }
-
-        .company-name {
-            font-weight: 800;
-            font-size: 1.3rem;
-            color: var(--primary-color); 
-            letter-spacing: -0.5px;
-        }
-
-        nav ul {
-            list-style: none;
-            display: flex;
-            gap: 25px;
-        }
-
-        nav a {
-            text-decoration: none;
-            color: var(--primary-color);
-            font-weight: 600;
-            font-size: 0.95rem;
-            transition: all 0.3s ease;
-            position: relative;
-        }
-
-        nav a::after {
-            content: '';
-            position: absolute;
-            width: 0;
-            height: 2px;
-            bottom: -5px;
-            left: 0;
-            background-color: var(--primary-color);
-            transition: width 0.3s;
-        }
-
-        nav a:hover::after {
-            width: 100%;
-        }
-
-        .btn-primary {
-            background-color: var(--primary-color);
-            color: var(--white);
-            padding: 12px 24px;
-            border-radius: 6px;
-            text-decoration: none;
-            font-weight: 600;
-            transition: all 0.3s ease;
-            border: none;
-            cursor: pointer;
-            box-shadow: 0 4px 6px rgba(230, 81, 0, 0.2);
-            display: inline-block;
-        }
-
-        .btn-primary:hover {
-            background-color: var(--primary-hover);
-            transform: translateY(-3px) scale(1.02);
-            box-shadow: 0 8px 15px rgba(230, 81, 0, 0.4);
-        }
-
-        /* --- Hero Section Moderna --- */
-        .hero {
-            background: linear-gradient(135deg, var(--dark-bg) 0%, #1a2333 100%);
-            padding: 120px 20px;
-            text-align: center;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .hero::before {
-            content: '';
-            position: absolute;
-            top: 0; left: 0; right: 0; bottom: 0;
-            background-image: radial-gradient(circle at 20% 50%, rgba(230, 81, 0, 0.15) 0%, transparent 50%),
-                              radial-gradient(circle at 80% 80%, rgba(230, 81, 0, 0.15) 0%, transparent 50%);
-            pointer-events: none;
-            animation: pulseGlow 8s infinite alternate;
-        }
-
-        @keyframes pulseGlow {
-            0% { opacity: 0.5; }
-            100% { opacity: 1; }
-        }
-
-        .hero-content {
-            position: relative;
-            z-index: 1;
-            max-width: 800px;
-            margin: 0 auto;
-        }
-
-        .hero h1 {
-            font-size: 3rem;
-            font-weight: 800;
-            margin-bottom: 20px;
-            color: var(--white);
-            line-height: 1.2;
-        }
-
-        .hero h1 span {
-            color: var(--primary-color);
-        }
-
-        .hero p {
-            font-size: 1.2rem;
-            color: #CBD5E1;
-            margin-bottom: 40px;
-        }
-
-        /* --- Secciones Generales --- */
-        .section-padding {
-            padding: 80px 20px;
-            max-width: 1200px;
-            margin: 0 auto;
-        }
-
-        .section-title {
-            text-align: center;
-            font-size: 2.2rem;
-            font-weight: 800;
-            margin-bottom: 50px;
-            color: var(--dark-bg);
-        }
-
-        .section-title span {
-            color: var(--primary-color);
-        }
-
-        /* --- Sobre Nosotros (Organización) --- */
-        .about-grid {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 50px;
-            align-items: center;
-        }
-
-        .about-text h3 {
-            font-size: 1.8rem;
-            color: var(--dark-bg);
-            margin-bottom: 20px;
-        }
-
-        .about-text p {
-            margin-bottom: 15px;
-            font-size: 1.05rem;
-        }
-
-        .about-stats {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 20px;
-        }
-
-        .stat-item {
-            background: var(--bg-light);
-            padding: 30px;
-            border-radius: 10px;
-            text-align: center;
-            border-left: 4px solid var(--primary-color);
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-        }
-
-        .stat-item:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 10px 20px rgba(0,0,0,0.05);
-        }
-
-        .stat-item h4 {
-            font-size: 2rem;
-            color: var(--primary-color);
-            margin-bottom: 5px;
-        }
-
-        /* --- Valores --- */
-        .values-section {
-            background-color: var(--bg-light);
-        }
-
-        .values-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 30px;
-        }
-
-        .value-card {
-            background: var(--white);
-            padding: 40px 30px;
-            border-radius: 10px;
-            text-align: center;
-            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-        }
-
-        .value-card:hover {
-            transform: translateY(-8px);
-            box-shadow: 0 15px 30px rgba(0,0,0,0.1);
-        }
-
-        .value-icon {
-            font-size: 2.5rem;
-            color: var(--primary-color);
-            margin-bottom: 20px;
-        }
-
-        .value-card h4 {
-            font-size: 1.3rem;
-            margin-bottom: 15px;
-            color: var(--dark-bg);
-        }
-
-        /* --- Servicios --- */
-        .services-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-            gap: 30px;
-        }
-
-        .service-card {
-            background: var(--white);
-            border: 1px solid #E2E8F0;
-            border-radius: 10px;
-            padding: 35px;
-            transition: all 0.4s ease;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .service-card::before {
-            content: '';
-            position: absolute;
-            top: 0; left: 0; width: 100%; height: 4px;
-            background-color: var(--primary-color);
-            transform: scaleX(0);
-            transform-origin: left;
-            transition: transform 0.4s ease;
-        }
-
-        .service-card:hover::before {
-            transform: scaleX(1);
-        }
-
-        .service-card:hover {
-            box-shadow: 0 15px 30px -5px rgba(0, 0, 0, 0.1);
-            border-color: transparent;
-            transform: translateY(-5px);
-        }
-
-        .service-icon {
-            font-size: 2.5rem;
-            color: var(--primary-color);
-            margin-bottom: 20px;
-            transition: transform 0.3s ease;
-        }
-
-        .service-card:hover .service-icon {
-            transform: scale(1.1);
-        }
-
-        .service-card h3 {
-            font-size: 1.2rem;
-            margin-bottom: 15px;
-            color: var(--dark-bg);
-        }
-
-        /* --- NUEVA SECCIÓN: Tecnologías de Punta --- */
-        .tech-section {
-            background-color: var(--dark-bg);
-            color: var(--white);
-            padding: 80px 20px;
-        }
-
-        .tech-section .section-title {
-            color: var(--white);
-            margin-bottom: 20px;
-        }
-
-        .tech-subtitle {
-            text-align: center;
-            color: #94A3B8;
-            font-size: 1.1rem;
-            max-width: 700px;
-            margin: 0 auto 50px auto;
-        }
-
-        .tech-grid {
-            max-width: 1200px;
-            margin: 0 auto;
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-            gap: 25px;
-        }
-
-        .tech-card {
-            background-color: var(--dark-bg-light);
-            border: 1px solid #334155;
-            border-radius: 10px;
-            padding: 30px;
-            transition: border-color 0.4s ease, transform 0.4s ease, box-shadow 0.4s ease;
-        }
-
-        .tech-card:hover {
-            border-color: var(--primary-color);
-            transform: translateY(-5px);
-            box-shadow: 0 10px 25px rgba(230, 81, 0, 0.15);
-        }
-
-        .tech-card h4 {
-            color: var(--white);
-            font-size: 1.2rem;
-            margin-bottom: 20px;
-            display: flex;
-            align-items: center;
-            gap: 10px;
-        }
-
-        .tech-card h4 i {
-            color: var(--primary-color);
-        }
-
-        .tech-list {
-            list-style: none;
-        }
-
-        .tech-list li {
-            color: #CBD5E1;
-            font-size: 0.95rem;
-            padding: 10px 0;
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            border-bottom: 1px solid #1E293B;
-            transition: color 0.3s ease;
-        }
-
-        .tech-list li:hover {
-            color: var(--white);
-        }
-
-        .tech-list li:last-child {
-            border-bottom: none;
-        }
-
-        .tech-list li i {
-            color: var(--primary-color);
-            width: 20px;
-            text-align: center;
-        }
-
-        /* --- Contacto y Socios --- */
-        .contact-section {
-            background-color: var(--bg-light);
-            text-align: center;
-            padding-bottom: 100px;
-        }
-
-        .contact-info {
-            display: flex;
-            justify-content: center;
-            gap: 50px;
-            flex-wrap: wrap;
-            margin-top: 40px;
-            margin-bottom: 80px; /* Espacio para separar de los socios */
-        }
-
-        .contact-item {
-            display: flex;
-            align-items: center;
-            gap: 15px;
-            font-size: 1.2rem;
-            font-weight: 600;
-            background: var(--white);
-            padding: 20px 30px;
-            border-radius: 10px;
-            box-shadow: 0 4px 6px rgba(0,0,0,0.05);
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-        }
-
-        .contact-item:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
-        }
-
-        .contact-item i {
-            color: var(--primary-color);
-            font-size: 1.8rem;
-        }
-
-        .contact-item a {
-            color: var(--dark-bg);
-            text-decoration: none;
-            transition: color 0.3s ease;
-        }
-
-        .contact-item a:hover {
-            color: var(--primary-color);
-        }
-
-        /* --- Sección Socios Fundadores --- */
-        .founders-container {
-            max-width: 900px;
-            margin: 0 auto;
-        }
-
-        .founders-title {
-            font-size: 1.8rem;
-            color: var(--dark-bg);
-            margin-bottom: 40px;
-            text-align: center;
-        }
-
-        .founders-title span {
-            color: var(--primary-color);
-        }
-
-        .founders-grid {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 40px;
-        }
-
-        .founder-card {
-            background: var(--white);
-            padding: 40px 30px;
-            border-radius: 12px;
-            box-shadow: 0 4px 10px rgba(0,0,0,0.05);
-            text-align: center;
-            border-bottom: 4px solid var(--primary-color);
-            transition: transform 0.3s ease;
-        }
-
-        .founder-card:hover {
-            transform: translateY(-5px);
-        }
-
-        .founder-avatar {
-            width: 100px;
-            height: 100px;
-            background-color: #FFF3E0;
-            border-radius: 50%;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            margin: 0 auto 20px auto;
-            font-size: 3rem;
-            color: var(--primary-color);
-            border: 3px solid var(--primary-color);
-        }
-
-        .founder-card h4 {
-            font-size: 1.4rem;
-            color: var(--dark-bg);
-            margin-bottom: 5px;
-        }
-
-        .founder-role {
-            font-size: 0.9rem;
-            color: var(--primary-color);
-            font-weight: 700;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            margin-bottom: 15px;
-        }
-
-        .founder-bio {
-            font-size: 0.95rem;
-            color: var(--text-light);
-        }
-
-        /* --- Footer --- */
-        footer {
-            background-color: var(--dark-bg-light);
-            color: #94A3B8;
-            padding: 40px 20px;
-            text-align: center;
-            font-size: 0.9rem;
-        }
-
-        /* --- Responsive --- */
-        @media (max-width: 900px) {
-            .about-grid {
-                grid-template-columns: 1fr;
-            }
-            .founders-grid {
-                grid-template-columns: 1fr;
-            }
-        }
-
-        @media (max-width: 768px) {
-            .nav-container {
-                flex-direction: column;
-                gap: 15px;
-            }
-            nav ul {
-                gap: 15px;
-                flex-wrap: wrap;
-                justify-content: center;
-            }
-            .hero h1 {
-                font-size: 2.2rem;
-            }
-            .contact-info {
-                flex-direction: column;
-                gap: 20px;
-            }
-        }
-    </style>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>D' Primera RY — Servicios Tecnológicos de Primera Mano</title>
+<meta name="description" content="D' Primera RY: desarrollo de software a medida, análisis de datos, sistemas de gestión, soporte técnico, redes, servidores e impresión. Tu primera opción." />
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='22' fill='%23F97316'/><text x='50' y='70' font-size='56' text-anchor='middle' fill='white' font-family='Arial' font-weight='bold'>D</text></svg>" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="./assets/fonts.css" rel="stylesheet" />
+
+<style>
+/* ============ VARIABLES Y BASE ============ */
+:root{
+  --naranja:#F97316;
+  --naranja-osc:#EA580C;
+  --naranja-suave:#FFEDD5;
+  --tinta:#0F172A;
+  --tinta-2:#1E293B;
+  --gris:#64748B;
+  --borde:#E2E8F0;
+  --fondo:#FFFFFF;
+  --fondo-crema:#FFF8F2;
+  --radio:16px;
+  --sombra:0 10px 30px rgba(15,23,42,.08);
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  font-family:'Inter',sans-serif;
+  color:var(--tinta);
+  background:var(--fondo);
+  line-height:1.6;
+  overflow-x:hidden;
+}
+h1,h2,h3,h4{font-family:'Poppins',sans-serif;line-height:1.2}
+img{max-width:100%;display:block}
+a{text-decoration:none;color:inherit}
+section{scroll-margin-top:80px}
+.contenedor{width:min(1140px,92%);margin-inline:auto}
+
+/* ============ BOTONES ============ */
+.btn{
+  display:inline-flex;align-items:center;gap:.5rem;
+  padding:.9rem 1.8rem;border-radius:999px;
+  font-weight:600;font-size:1rem;cursor:pointer;
+  transition:.25s ease;border:2px solid transparent;
+}
+.btn-naranja{background:linear-gradient(135deg,var(--naranja),var(--naranja-osc));color:#fff;box-shadow:0 8px 20px rgba(249,115,22,.35)}
+.btn-naranja:hover{transform:translateY(-3px);box-shadow:0 12px 28px rgba(249,115,22,.45)}
+.btn-borde{border-color:rgba(255,255,255,.35);color:#fff}
+.btn-borde:hover{border-color:var(--naranja);color:var(--naranja);background:rgba(249,115,22,.08)}
+
+/* ============ HEADER ============ */
+header{
+  position:fixed;top:0;left:0;right:0;z-index:100;
+  padding:1.1rem 0;transition:.3s ease;
+}
+header.scrolled{
+  background:rgba(15,23,42,.92);backdrop-filter:blur(12px);
+  padding:.65rem 0;box-shadow:0 4px 20px rgba(0,0,0,.25);
+}
+.nav{display:flex;align-items:center;justify-content:space-between}
+.logo{display:flex;align-items:center;gap:.7rem}
+.logo-marca{
+  width:42px;height:42px;border-radius:12px;
+  background:linear-gradient(135deg,var(--naranja),var(--naranja-osc));
+  display:grid;place-items:center;
+  font-family:'Poppins';font-weight:800;font-size:1.3rem;color:#fff;
+}
+.logo-texto{font-family:'Poppins';font-weight:700;font-size:1.15rem;color:#fff;letter-spacing:.02em}
+.logo-texto span{color:var(--naranja)}
+/* 👉 Para usar tu logo real, reemplaza el div.logo-marca por:
+   <img src="./assets/logo.png" alt="D' Primera RY" style="height:44px"> */
+.nav-links{display:flex;gap:2.2rem;list-style:none}
+.nav-links a{color:#CBD5E1;font-weight:500;font-size:.95rem;transition:.2s;position:relative}
+.nav-links a:hover{color:#fff}
+.nav-links a::after{
+  content:"";position:absolute;left:0;bottom:-6px;width:0;height:2px;
+  background:var(--naranja);border-radius:2px;transition:.25s;
+}
+.nav-links a:hover::after{width:100%}
+.nav-cta{padding:.65rem 1.4rem;font-size:.9rem}
+.hamburguesa{display:none;background:none;border:none;cursor:pointer;z-index:110}
+.hamburguesa span{display:block;width:26px;height:3px;background:#fff;margin:5px 0;border-radius:3px;transition:.3s}
+.hamburguesa.abierto span:nth-child(1){transform:translateY(8px) rotate(45deg)}
+.hamburguesa.abierto span:nth-child(2){opacity:0}
+.hamburguesa.abierto span:nth-child(3){transform:translateY(-8px) rotate(-45deg)}
+
+/* ============ HERO ============ */
+.hero{
+  position:relative;min-height:100vh;
+  background:var(--tinta);
+  display:flex;align-items:center;
+  padding:8rem 0 5rem;
+  overflow:hidden;
+}
+.hero::before{ /* cuadrícula tecnológica */
+  content:"";position:absolute;inset:0;
+  background-image:
+    linear-gradient(rgba(255,255,255,.035) 1px,transparent 1px),
+    linear-gradient(90deg,rgba(255,255,255,.035) 1px,transparent 1px);
+  background-size:52px 52px;
+}
+.blob{position:absolute;border-radius:50%;filter:blur(90px);opacity:.55;pointer-events:none}
+.blob-1{width:480px;height:480px;background:rgba(249,115,22,.5);top:-120px;right:-100px}
+.blob-2{width:380px;height:380px;background:rgba(249,115,22,.25);bottom:-140px;left:-120px}
+.hero-grid{
+  position:relative;display:grid;grid-template-columns:1.1fr .9fr;
+  gap:3rem;align-items:center;
+}
+.hero-badge{
+  display:inline-flex;align-items:center;gap:.5rem;
+  background:rgba(249,115,22,.14);border:1px solid rgba(249,115,22,.4);
+  color:#FDBA74;padding:.45rem 1.1rem;border-radius:999px;
+  font-size:.85rem;font-weight:600;margin-bottom:1.4rem;
+}
+.hero-badge::before{content:"●";color:var(--naranja);font-size:.6rem}
+.hero h1{
+  color:#fff;font-size:clamp(2.3rem,5vw,3.6rem);font-weight:800;
+  margin-bottom:1.2rem;
+}
+.hero h1 span{
+  background:linear-gradient(90deg,var(--naranja),#FFB020);
+  -webkit-background-clip:text;background-clip:text;color:transparent;
+}
+.hero p{color:#94A3B8;font-size:1.15rem;max-width:32rem;margin-bottom:2.2rem}
+.hero-botones{display:flex;gap:1rem;flex-wrap:wrap}
+
+/* --- Panel estilo dashboard (decorativo) --- */
+.panel{
+  position:relative;background:rgba(30,41,59,.75);
+  border:1px solid rgba(255,255,255,.1);border-radius:20px;
+  padding:1.4rem;backdrop-filter:blur(8px);
+  box-shadow:0 30px 60px rgba(0,0,0,.4);
+  animation:flotar 6s ease-in-out infinite;
+}
+@keyframes flotar{0%,100%{transform:translateY(0)}50%{transform:translateY(-14px)}}
+.panel-barra{display:flex;gap:.45rem;margin-bottom:1.2rem}
+.panel-barra i{width:11px;height:11px;border-radius:50%;background:#475569}
+.panel-barra i:first-child{background:var(--naranja)}
+.panel-titulo{color:#94A3B8;font-size:.78rem;font-weight:600;margin-bottom:1rem;display:flex;justify-content:space-between}
+.panel-titulo b{color:#FDBA74}
+.panel-grafico{display:flex;align-items:flex-end;gap:.55rem;height:130px}
+.barra{
+  flex:1;border-radius:8px 8px 0 0;
+  background:linear-gradient(180deg,var(--naranja),rgba(249,115,22,.15));
+  animation:crecer 1.4s ease both;transform-origin:bottom;
+}
+@keyframes crecer{from{transform:scaleY(0)}to{transform:scaleY(1)}}
+.chip{
+  position:absolute;background:var(--tinta-2);
+  border:1px solid rgba(255,255,255,.12);color:#E2E8F0;
+  padding:.5rem .9rem;border-radius:10px;font-size:.78rem;font-weight:600;
+  display:flex;align-items:center;gap:.45rem;box-shadow:var(--sombra);
+}
+.chip-1{top:-22px;left:8%} .chip-2{bottom:-20px;right:6%;animation-delay:2s}
+.chip svg{color:var(--naranja)}
+
+/* ============ SECCIONES GENERALES ============ */
+.seccion{padding:6rem 0}
+.seccion-crema{background:var(--fondo-crema)}
+.encabezado{text-align:center;max-width:40rem;margin:0 auto 3.5rem}
+.etiqueta{
+  display:inline-block;color:var(--naranja-osc);font-weight:700;
+  font-size:.82rem;letter-spacing:.14em;text-transform:uppercase;margin-bottom:.7rem;
+}
+.encabezado h2{font-size:clamp(1.9rem,4vw,2.6rem);font-weight:800;margin-bottom:.9rem}
+.encabezado p{color:var(--gris);font-size:1.08rem}
+
+/* ============ SERVICIOS ============ */
+.servicios-grid{
+  display:grid;grid-template-columns:repeat(3,1fr);gap:1.6rem;
+}
+.servicio{
+  background:#fff;border:1px solid var(--borde);border-radius:var(--radio);
+  padding:2rem 1.7rem;transition:.3s ease;position:relative;overflow:hidden;
+}
+.servicio::before{
+  content:"";position:absolute;top:0;left:0;right:0;height:4px;
+  background:linear-gradient(90deg,var(--naranja),#FFB020);
+  transform:scaleX(0);transform-origin:left;transition:.3s;
+}
+.servicio:hover{transform:translateY(-8px);box-shadow:0 18px 40px rgba(249,115,22,.16);border-color:rgba(249,115,22,.35)}
+.servicio:hover::before{transform:scaleX(1)}
+.servicio-icono{
+  width:58px;height:58px;border-radius:14px;margin-bottom:1.2rem;
+  background:var(--naranja-suave);display:grid;place-items:center;
+  transition:.3s;
+}
+.servicio:hover .servicio-icono{background:linear-gradient(135deg,var(--naranja),var(--naranja-osc));box-shadow:0 8px 18px rgba(249,115,22,.35)}
+.servicio-icono svg{color:var(--naranja-osc);transition:.3s}
+.servicio:hover .servicio-icono svg{color:#fff}
+.servicio h3{font-size:1.12rem;margin-bottom:.6rem}
+.servicio p{color:var(--gris);font-size:.95rem}
+.servicio a{
+  display:inline-flex;align-items:center;gap:.4rem;margin-top:1.1rem;
+  color:var(--naranja-osc);font-weight:600;font-size:.9rem;transition:.2s;
+}
+.servicio a:hover{gap:.75rem}
+
+/* ============ POR QUÉ ELEGIRNOS ============ */
+.porque{
+  background:var(--tinta);position:relative;overflow:hidden;
+}
+.porque::after{
+  content:"";position:absolute;width:500px;height:500px;border-radius:50%;
+  background:rgba(249,115,22,.12);filter:blur(120px);top:-200px;left:-150px;
+}
+.porque .etiqueta{color:#FDBA74}
+.porque .encabezado h2{color:#fff}
+.porque .encabezado p{color:#94A3B8}
+.porque-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:1.6rem;position:relative}
+.porque-card{
+  background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.1);
+  border-radius:var(--radio);padding:1.9rem 1.5rem;transition:.3s;
+}
+.porque-card:hover{background:rgba(249,115,22,.12);border-color:rgba(249,115,22,.45);transform:translateY(-6px)}
+.porque-card .num{
+  font-family:'Poppins';font-weight:800;font-size:2rem;
+  background:linear-gradient(135deg,var(--naranja),#FFB020);
+  -webkit-background-clip:text;background-clip:text;color:transparent;
+}
+.porque-card h3{color:#fff;font-size:1.05rem;margin:.7rem 0 .5rem}
+.porque-card p{color:#94A3B8;font-size:.9rem}
+
+/* ============ CTA ============ */
+.cta-faja{
+  background:linear-gradient(120deg,var(--naranja),var(--naranja-osc));
+  border-radius:24px;padding:3.5rem 3rem;text-align:center;
+  position:relative;overflow:hidden;
+}
+.cta-faja::before{
+  content:"";position:absolute;inset:0;
+  background-image:radial-gradient(rgba(255,255,255,.16) 1.5px,transparent 1.5px);
+  background-size:26px 26px;opacity:.5;
+}
+.cta-faja h2{color:#fff;font-size:clamp(1.7rem,3.5vw,2.4rem);font-weight:800;position:relative}
+.cta-faja p{color:rgba(255,255,255,.9);margin:1rem auto 2rem;max-width:34rem;position:relative}
+.btn-blanco{background:#fff;color:var(--naranja-osc);position:relative}
+.btn-blanco:hover{transform:translateY(-3px);box-shadow:0 12px 26px rgba(0,0,0,.25)}
+
+/* ============ CONTACTO ============ */
+.contacto-grid{display:grid;grid-template-columns:1fr 1.1fr;gap:3rem;align-items:start}
+.telefonos{display:grid;gap:1.1rem;margin-bottom:1.6rem}
+.telefono{
+  display:flex;align-items:center;gap:1.1rem;
+  background:#fff;border:1px solid var(--borde);border-radius:var(--radio);
+  padding:1.2rem 1.4rem;transition:.25s;
+}
+.telefono:hover{border-color:var(--naranja);box-shadow:0 10px 26px rgba(249,115,22,.15);transform:translateY(-3px)}
+.telefono-icono{
+  width:50px;height:50px;border-radius:12px;flex-shrink:0;
+  background:linear-gradient(135deg,var(--naranja),var(--naranja-osc));
+  display:grid;place-items:center;color:#fff;
+}
+.telefono small{display:block;color:var(--gris);font-size:.8rem}
+.telefono strong{font-family:'Poppins';font-size:1.15rem}
+.wa-btn{
+  display:inline-flex;align-items:center;gap:.6rem;
+  background:#25D366;color:#fff;padding:.85rem 1.6rem;
+  border-radius:999px;font-weight:600;transition:.25s;
+}
+.wa-btn:hover{background:#1EB855;transform:translateY(-3px);box-shadow:0 10px 22px rgba(37,211,102,.4)}
+/* Formulario */
+.form-card{
+  background:#fff;border:1px solid var(--borde);border-radius:var(--radio);
+  padding:2.2rem;box-shadow:var(--sombra);
+}
+.form-card h3{margin-bottom:.4rem}
+.form-card > p{color:var(--gris);font-size:.92rem;margin-bottom:1.5rem}
+.campo{margin-bottom:1.1rem}
+.campo label{display:block;font-weight:600;font-size:.88rem;margin-bottom:.4rem}
+.campo input,.campo select,.campo textarea{
+  width:100%;padding:.85rem 1rem;border:1.5px solid var(--borde);
+  border-radius:10px;font-family:inherit;font-size:.95rem;
+  transition:.2s;background:#FDFDFD;
+}
+.campo input:focus,.campo select:focus,.campo textarea:focus{
+  outline:none;border-color:var(--naranja);box-shadow:0 0 0 4px rgba(249,115,22,.14);
+}
+.campo textarea{resize:vertical;min-height:110px}
+.nota-form{font-size:.78rem;color:var(--gris);margin-top:.9rem;text-align:center}
+
+/* ============ FOOTER ============ */
+footer{background:var(--tinta);color:#94A3B8;padding:4rem 0 0}
+.footer-grid{display:grid;grid-template-columns:1.4fr 1fr 1fr;gap:2.5rem;padding-bottom:2.5rem}
+.footer-logo{display:flex;align-items:center;gap:.7rem;margin-bottom:1rem}
+.footer-grid h4{color:#fff;margin-bottom:1.1rem;font-size:1rem}
+.footer-grid ul{list-style:none;display:grid;gap:.6rem}
+.footer-grid ul a{font-size:.92rem;transition:.2s}
+.footer-grid ul a:hover{color:var(--naranja)}
+.slogan-footer{font-style:italic;color:#FDBA74;font-size:.95rem;margin-top:.8rem}
+.footer-barra{
+  border-top:1px solid rgba(255,255,255,.08);
+  padding:1.4rem 0;text-align:center;font-size:.85rem;
+}
+
+/* ============ BOTÓN WHATSAPP FLOTANTE ============ */
+.wa-flotante{
+  position:fixed;bottom:26px;right:26px;z-index:120;
+  width:58px;height:58px;border-radius:50%;
+  background:#25D366;display:grid;place-items:center;
+  box-shadow:0 10px 26px rgba(37,211,102,.45);
+  transition:.25s;animation:pulso 2.5s infinite;
+}
+.wa-flotante:hover{transform:scale(1.1)}
+@keyframes pulso{
+  0%,100%{box-shadow:0 10px 26px rgba(37,211,102,.45)}
+  50%{box-shadow:0 10px 26px rgba(37,211,102,.45),0 0 0 14px rgba(37,211,102,.12)}
+}
+
+/* ============ ANIMACIÓN DE APARICIÓN ============ */
+.reveal{opacity:0;transform:translateY(30px);transition:.7s ease}
+.reveal.visible{opacity:1;transform:translateY(0)}
+.reveal:nth-child(2){transition-delay:.12s}
+.reveal:nth-child(3){transition-delay:.24s}
+.reveal:nth-child(4){transition-delay:.36s}
+.reveal:nth-child(5){transition-delay:.48s}
+.reveal:nth-child(6){transition-delay:.6s}
+
+/* ============ RESPONSIVE ============ */
+@media (max-width:960px){
+  .hero-grid,.contacto-grid{grid-template-columns:1fr}
+  .servicios-grid{grid-template-columns:repeat(2,1fr)}
+  .porque-grid{grid-template-columns:repeat(2,1fr)}
+  .footer-grid{grid-template-columns:1fr 1fr}
+  .hero-panel{display:none} /* oculta el panel decorativo en pantallas medianas */
+}
+@media (max-width:640px){
+  .servicios-grid,.porque-grid,.footer-grid{grid-template-columns:1fr}
+  .nav-links{
+    position:fixed;inset:0;background:rgba(15,23,42,.98);
+    flex-direction:column;align-items:center;justify-content:center;
+    gap:2rem;clip-path:circle(0 at calc(100% - 44px) 40px);transition:.4s;
+  }
+  .nav-links.abierto{clip-path:circle(150% at calc(100% - 44px) 40px)}
+  .nav-links a{font-size:1.2rem}
+  .hamburguesa{display:block}
+  .nav-cta{display:none}
+  .cta-faja{padding:2.5rem 1.5rem}
+}
+</style>
 </head>
 <body>
 
-    <!-- Header -->
-    <header>
-        <div class="nav-container">
-            <a href="#" class="logo-container">
-                <img src="assets/logo.png" alt="D' Primera RY" class="logo-img">
-                <span class="company-name">D' Primera RY</span>
-            </a>
-            <nav>
-                <ul>
-                    <li><a href="#nosotros">Nosotros</a></li>
-                    <li><a href="#valores">Valores</a></li>
-                    <li><a href="#servicios">Servicios</a></li>
-                    <li><a href="#tecnologias">Tecnologías</a></li>
-                    <li><a href="#contacto">Contacto</a></li>
-                </ul>
-            </nav>
-            <!-- Botón "Cotizar Ahora" eliminado según lo solicitado -->
+<!-- ================= HEADER ================= -->
+<header id="header">
+  <div class="contenedor nav">
+    <a href="#inicio" class="logo">
+	  <img src="./assets/logo.png" style="height:44px">
+      
+      <div class="logo-texto">D' Primera <span>RY</span></div>
+    </a>
+    <ul class="nav-links" id="navLinks">
+      <li><a href="#inicio">Inicio</a></li>
+      <li><a href="#servicios">Servicios</a></li>
+      <li><a href="#nosotros">Nosotros</a></li>
+      <li><a href="#contacto">Contacto</a></li>
+    </ul>
+    <a href="#contacto" class="btn btn-naranja nav-cta">Contáctanos</a>
+    <button class="hamburguesa" id="hamburguesa" aria-label="Menú">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</header>
+
+<!-- ================= HERO ================= -->
+<section class="hero" id="inicio">
+  <div class="blob blob-1"></div>
+  <div class="blob blob-2"></div>
+  <div class="contenedor hero-grid">
+    <div>
+      <span class="hero-badge">Tu primera opción en tecnología</span>
+      <h1>Servicios tecnológicos de <span>primera mano</span></h1>
+      <p>
+        En <strong>D' Primera RY SRL</strong> convertimos la tecnología en
+        resultados: software a medida, análisis de datos, soporte técnico,
+        redes y mucho más para impulsar tu negocio.
+      </p>
+      <div class="hero-botones">
+        <a href="#servicios" class="btn btn-naranja">Ver servicios →</a>
+        <a href="#contacto" class="btn btn-borde">Contáctanos</a>
+      </div>
+    </div>
+    <div class="hero-panel">
+      <div class="panel">
+        <div class="panel-barra"><i></i><i></i><i></i></div>
+        <div class="panel-titulo">Panel de crecimiento <b>▲ 100%</b></div>
+        <div class="panel-grafico">
+          <div class="barra" style="height:35%;animation-delay:.1s"></div>
+          <div class="barra" style="height:55%;animation-delay:.25s"></div>
+          <div class="barra" style="height:42%;animation-delay:.4s"></div>
+          <div class="barra" style="height:70%;animation-delay:.55s"></div>
+          <div class="barra" style="height:58%;animation-delay:.7s"></div>
+          <div class="barra" style="height:88%;animation-delay:.85s"></div>
+          <div class="barra" style="height:100%;animation-delay:1s"></div>
         </div>
-    </header>
-
-    <!-- Hero Section -->
-    <section class="hero">
-        <div class="hero-content">
-            <h1 class="animate-on-scroll">Servicios tecnológicos de <span>primera mano</span>.<br>Tu primera opción.</h1>
-            <p class="animate-on-scroll" style="transition-delay: 0.1s;">Impulsamos la transformación digital de tu empresa con software a medida, infraestructura robusta y soluciones administrativas de alto nivel.</p>
-            <a href="https://wa.me/59154719486?text=Hola%20quiero%20saber%20de%20D%27Primera" target="_blank" class="btn-primary animate-on-scroll" style="font-size: 1.1rem; padding: 16px 36px; transition-delay: 0.2s;">Solicitar Información</a>
+        <div class="chip chip-1">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/></svg>
+          Soporte técnico
         </div>
-    </section>
-
-    <!-- Sección Organización / Sobre Nosotros -->
-    <section id="nosotros" class="section-padding">
-        <h2 class="section-title animate-on-scroll">Nuestra <span>Organización</span></h2>
-        <div class="about-grid">
-            <div class="about-text animate-on-scroll">
-                <h3>Expertos en soluciones integrales</h3>
-                <p>En <strong>D' Primera RY SRL</strong> somos una empresa dedicada a brindar soluciones tecnológicas integrales. Nos especializamos en entender las necesidades específicas de cada cliente para desarrollar herramientas que optimicen sus procesos y aumenten su productividad.</p>
-                <p>Contamos con un equipo multidisciplinario de profesionales apasionados por la tecnología, listos para acompañar a su empresa en cada etapa de su crecimiento digital.</p>
-            </div>
-            <div class="about-stats animate-on-scroll" style="transition-delay: 0.2s;">
-                <div class="stat-item">
-                    <h4>+20</h4>
-                    <p>Proyectos Entregados</p>
-                </div>
-                <div class="stat-item">
-                    <h4>24/7</h4>
-                    <p>Soporte Técnico</p>
-                </div>
-                <div class="stat-item">
-                    <h4>100%</h4>
-                    <p>Soluciones a Medida</p>
-                </div>
-                <div class="stat-item">
-                    <h4>+5</h4>
-                    <p>Años de Experiencia</p>
-                </div>
-            </div>
+        <div class="chip chip-2">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/></svg>
+          Análisis de datos
         </div>
-    </section>
+      </div>
+    </div>
+  </div>
+</section>
 
-    <!-- Sección Valores -->
-    <section id="valores" class="section-padding values-section">
-        <h2 class="section-title animate-on-scroll">Nuestros <span>Valores</span></h2>
-        <div class="values-grid">
-            <div class="value-card animate-on-scroll">
-                <div class="value-icon"><i class="fa-solid fa-lightbulb"></i></div>
-                <h4>Innovación</h4>
-                <p>Buscamos constantemente nuevas tecnologías para ofrecer soluciones vanguardistas y eficientes.</p>
-            </div>
-            <div class="value-card animate-on-scroll" style="transition-delay: 0.1s;">
-                <div class="value-icon"><i class="fa-solid fa-handshake"></i></div>
-                <h4>Compromiso</h4>
-                <p>Nos involucramos al 100% con los objetivos de nuestros clientes, trabajando como un socio estratégico.</p>
-            </div>
-            <div class="value-card animate-on-scroll" style="transition-delay: 0.2s;">
-                <div class="value-icon"><i class="fa-solid fa-shield-halved"></i></div>
-                <h4>Seguridad</h4>
-                <p>Protegemos la información y los activos digitales de su empresa con los más altos estándares.</p>
-            </div>
-            <div class="value-card animate-on-scroll" style="transition-delay: 0.3s;">
-                <div class="value-icon"><i class="fa-solid fa-medal"></i></div>
-                <h4>Excelencia</h4>
-                <p>Garantizamos calidad en cada línea de código, cada red instalada y cada equipo reparado.</p>
-            </div>
+<!-- ================= SERVICIOS ================= -->
+<section class="seccion seccion-crema" id="servicios">
+  <div class="contenedor">
+    <div class="encabezado reveal">
+      <span class="etiqueta">Nuestros servicios</span>
+      <h2>Soluciones tecnológicas integrales</h2>
+      <p>Seis líneas de servicio especializadas para cubrir todas las necesidades tecnológicas de tu empresa.</p>
+    </div>
+    <div class="servicios-grid">
+
+      <div class="servicio reveal">
+        <div class="servicio-icono">
+          <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg>
         </div>
-    </section>
+        <h3>Desarrollo de Software a Medida</h3>
+        <p>Aplicaciones personalizadas que se adaptan exactamente a los procesos y necesidades específicas de tu negocio.</p>
+        <a href="#contacto">Solicitar información →</a>
+      </div>
 
-    <!-- Sección Servicios -->
-    <section id="servicios" class="section-padding">
-        <h2 class="section-title animate-on-scroll">Catálogo de <span>Servicios</span></h2>
-        <div class="services-grid">
-            <!-- Servicio 1 -->
-            <div class="service-card animate-on-scroll">
-                <div class="service-icon"><i class="fa-solid fa-laptop-code"></i></div>
-                <h3>1. Desarrollo de Software y Aplicaciones a la medida</h3>
-                <p>Soluciones personalizadas para sus necesidades específicas, adaptadas al flujo de trabajo de su empresa.</p>
-            </div>
-            <!-- Servicio 2 -->
-            <div class="service-card animate-on-scroll" style="transition-delay: 0.1s;">
-                <div class="service-icon"><i class="fa-solid fa-chart-line"></i></div>
-                <h3>2. Sistemas de Análisis</h3>
-                <p>Inteligencia de negocios y visualización de datos para tomar decisiones estratégicas basadas en información real.</p>
-            </div>
-            <!-- Servicio 3 -->
-            <div class="service-card animate-on-scroll" style="transition-delay: 0.2s;">
-                <div class="service-icon"><i class="fa-solid fa-briefcase"></i></div>
-                <h3>3. Venta de Sistemas de Gestión para Actores Económicos</h3>
-                <p>Optimización administrativa y herramientas contables/financieras diseñadas para el sector económico.</p>
-            </div>
-            <!-- Servicio 4 -->
-            <div class="service-card animate-on-scroll">
-                <div class="service-icon"><i class="fa-solid fa-screwdriver-wrench"></i></div>
-                <h3>4. Mantenimiento y Atención de Computadoras</h3>
-                <p>Soporte técnico preventivo y correctivo para mantener sus equipos operando al máximo rendimiento.</p>
-            </div>
-            <!-- Servicio 5 -->
-            <div class="service-card animate-on-scroll" style="transition-delay: 0.1s;">
-                <div class="service-icon"><i class="fa-solid fa-network-wired"></i></div>
-                <h3>5. Gestión y Administración de Redes y Servidores</h3>
-                <p>Infraestructura robusta y segura. Nos encargamos de que su conectividad y datos estén siempre protegidos.</p>
-            </div>
-            <!-- Servicio 6 -->
-            <div class="service-card animate-on-scroll" style="transition-delay: 0.2s;">
-                <div class="service-icon"><i class="fa-solid fa-print"></i></div>
-                <h3>6. Servicios de Impresión</h3>
-                <p>Impresión de alta calidad y soluciones de copiado para todas las necesidades documentales de su oficina.</p>
-            </div>
+      <div class="servicio reveal">
+        <div class="servicio-icono">
+          <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/></svg>
         </div>
-    </section>
+        <h3>Sistemas de Análisis de Datos</h3>
+        <p>Transformamos tus datos en información valiosa para tomar decisiones más inteligentes y estratégicas.</p>
+        <a href="#contacto">Solicitar información →</a>
+      </div>
 
-    <!-- Sección Tecnologías de Punta -->
-    <section id="tecnologias" class="tech-section">
-        <h2 class="section-title animate-on-scroll">Tecnologías <span>de Punta</span></h2>
-        <p class="tech-subtitle animate-on-scroll">Trabajamos con tecnologías de punta para garantizar las mejores soluciones en cada área de servicio.</p>
-        
-        <div class="tech-grid">
-            <!-- Software -->
-            <div class="tech-card animate-on-scroll">
-                <h4><i class="fa-solid fa-code"></i> Desarrollo de Software</h4>
-                <ul class="tech-list">
-                    <li><i class="fa-brands fa-react"></i> React & Next.js</li>
-                    <li><i class="fa-brands fa-node-js"></i> Node.js & Python</li>
-                    <li><i class="fa-solid fa-database"></i> PostgreSQL / MongoDB</li>
-                    <li><i class="fa-brands fa-docker"></i> Docker & Kubernetes</li>
-                </ul>
-            </div>
-
-            <!-- Análisis e IA -->
-            <div class="tech-card animate-on-scroll" style="transition-delay: 0.1s;">
-                <h4><i class="fa-solid fa-brain"></i> Sistemas de Análisis</h4>
-                <ul class="tech-list">
-                    <li><i class="fa-solid fa-robot"></i> Inteligencia Artificial (IA)</li>
-                    <li><i class="fa-solid fa-chart-pie"></i> Power BI & Tableau</li>
-                    <li><i class="fa-solid fa-cloud"></i> Big Data en la Nube</li>
-                    <li><i class="fa-solid fa-gears"></i> Machine Learning</li>
-                </ul>
-            </div>
-
-            <!-- Gestión -->
-            <div class="tech-card animate-on-scroll" style="transition-delay: 0.2s;">
-                <h4><i class="fa-solid fa-chart-simple"></i> Sistemas de Gestión</h4>
-                <ul class="tech-list">
-                    <li><i class="fa-solid fa-layer-group"></i> ERPs a Medida</li>
-                    <li><i class="fa-brands fa-salesforce"></i> CRM & Salesforce</li>
-                    <li><i class="fa-solid fa-link"></i> Integración APIs REST</li>
-                    <li><i class="fa-solid fa-shield"></i> Seguridad Blockchain</li>
-                </ul>
-            </div>
-
-            <!-- Mantenimiento -->
-            <div class="tech-card animate-on-scroll">
-                <h4><i class="fa-solid fa-microchip"></i> Mantenimiento TI</h4>
-                <ul class="tech-list">
-                    <li><i class="fa-brands fa-windows"></i> Windows & macOS</li>
-                    <li><i class="fa-brands fa-linux"></i> Linux</li>
-                    <li><i class="fa-solid fa-wrench"></i> Diagnóstico Automatizado</li>
-                    <li><i class="fa-solid fa-hard-drive"></i> Recuperación de Datos SSD</li>
-                </ul>
-            </div>
-
-            <!-- Redes -->
-            <div class="tech-card animate-on-scroll" style="transition-delay: 0.1s;">
-                <h4><i class="fa-solid fa-server"></i> Redes y Servidores</h4>
-                <ul class="tech-list">
-                    <li><i class="fa-brands fa-aws"></i> AWS / Azure Cloud</li>
-                    <li><i class="fa-solid fa-network-wired"></i> Cisco & Fortinet</li>
-                    <li><i class="fa-solid fa-lock"></i> Ciberseguridad Avanzada</li>
-                    <li><i class="fa-solid fa-wifi"></i> Redes Mesh & VLANs</li>
-                </ul>
-            </div>
-
-            <!-- Impresión -->
-            <div class="tech-card animate-on-scroll" style="transition-delay: 0.2s;">
-                <h4><i class="fa-solid fa-print"></i> Impresión y Digitalización</h4>
-                <ul class="tech-list">
-                    <li><i class="fa-solid fa-camera"></i> Impresión de Fotos</li>
-                    <li><i class="fa-solid fa-file-pdf"></i> Gestión Documental Digital</li>
-                    <li><i class="fa-solid fa-bolt"></i> Equipos de Alta Velocidad</li>
-                    <li><i class="fa-solid fa-palette"></i> Calibración de Color Profesional</li>
-                </ul>
-            </div>
+      <div class="servicio reveal">
+        <div class="servicio-icono">
+          <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/></svg>
         </div>
-    </section>
+        <h3>Venta de Sistemas de Gestión</h3>
+        <p>Sistemas de gestión para entes económicos que optimizan y ordenan las operaciones diarias de tu organización.</p>
+        <a href="#contacto">Solicitar información →</a>
+      </div>
 
-    <!-- Sección Contacto y Socios -->
-    <section id="contacto" class="section-padding contact-section">
-        <h2 class="section-title animate-on-scroll">Contácte<span>nos</span></h2>
-        <p class="animate-on-scroll" style="color: var(--text-light); margin-bottom: 20px; font-size: 1.1rem;">Estamos listos para atender sus necesidades tecnológicas.</p>
-        
-        <div class="contact-info animate-on-scroll" style="transition-delay: 0.1s;">
-            <div class="contact-item">
-                <i class="fa-solid fa-phone"></i>
-                <a href="tel:54719486">54719486</a>
-            </div>
-            <div class="contact-item">
-                <i class="fa-brands fa-whatsapp" style="color: #25D366;"></i>
-                <a href="https://wa.me/59154719486?text=Hola%20quiero%20saber%20de%20D%27Primera" target="_blank">59159864</a>
-            </div>
+      <div class="servicio reveal">
+        <div class="servicio-icono">
+          <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/></svg>
         </div>
+        <h3>Mantenimiento y Soporte Técnico</h3>
+        <p>Mantenimiento de computadoras y soporte técnico oportuno para que tu equipo de trabajo nunca se detenga.</p>
+        <a href="#contacto">Solicitar información →</a>
+      </div>
 
-       
-    </section>
+      <div class="servicio reveal">
+        <div class="servicio-icono">
+          <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="8" rx="2"/><rect x="2" y="14" width="20" height="8" rx="2"/><line x1="6" y1="6" x2="6.01" y2="6"/><line x1="6" y1="18" x2="6.01" y2="18"/></svg>
+        </div>
+        <h3>Redes y Servidores</h3>
+        <p>Administración profesional de redes y servidores: una infraestructura segura, estable y siempre disponible.</p>
+        <a href="#contacto">Solicitar información →</a>
+      </div>
 
-    <!-- Footer -->
-    <footer>
-        <p>&copy; 2023 D' Primera RY SRL. Todos los derechos reservados.</p>
-        <p>Servicios tecnológicos de primera mano. Tu primera opción.</p>
-    </footer>
+      <div class="servicio reveal">
+        <div class="servicio-icono">
+          <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 6 2 18 2 18 9"/><path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"/><rect x="6" y="14" width="12" height="8"/></svg>
+        </div>
+        <h3>Servicios de Impresión</h3>
+        <p>Soluciones de impresión de alta calidad para todos los requerimientos y presentaciones de tu empresa.</p>
+        <a href="#contacto">Solicitar información →</a>
+      </div>
 
-    <!-- Script para Animaciones de Scroll (Intersection Observer) -->
-    <script>
-        document.addEventListener("DOMContentLoaded", function() {
-            const animatedElements = document.querySelectorAll('.animate-on-scroll');
+    </div>
+  </div>
+</section>
 
-            const observer = new IntersectionObserver((entries) => {
-                entries.forEach(entry => {
-                    if (entry.isIntersecting) {
-                        entry.target.classList.add('visible');
-                    }
-                });
-            }, {
-                threshold: 0.1,
-                rootMargin: "0px 0px -50px 0px"
-            });
+<!-- ================= POR QUÉ ELEGIRNOS ================= -->
+<section class="seccion porque" id="nosotros">
+  <div class="contenedor">
+    <div class="encabezado reveal">
+      <span class="etiqueta">¿Por qué elegirnos?</span>
+      <h2>Tecnología de primera, trato de primera</h2>
+      <p>Nuestro nombre lo dice todo: somos tu primera opción en servicios tecnológicos.</p>
+    </div>
+    <div class="porque-grid">
+      <div class="porque-card reveal">
+        <div class="num">01</div>
+        <h3>Soluciones a medida</h3>
+        <p>Cada proyecto se diseña pensando en tus procesos, tu presupuesto y tus objetivos.</p>
+      </div>
+      <div class="porque-card reveal">
+        <div class="num">02</div>
+        <h3>Atención de primera</h3>
+        <p>Trato cercano y respuesta oportuna. Tu prioridad es nuestra prioridad.</p>
+      </div>
+      <div class="porque-card reveal">
+        <div class="num">03</div>
+        <h3>Tecnología confiable</h3>
+        <p>Trabajamos con herramientas modernas y robustas para resultados duraderos.</p>
+      </div>
+      <div class="porque-card reveal">
+        <div class="num">04</div>
+        <h3>Acompañamiento total</h3>
+        <p>Estamos contigo antes, durante y después de cada proyecto. Siempre disponibles.</p>
+      </div>
+    </div>
+  </div>
+</section>
 
-            animatedElements.forEach(element => {
-                observer.observe(element);
-            });
-        });
-    </script>
+<!-- ================= CTA ================= -->
+<section class="seccion">
+  <div class="contenedor">
+    <div class="cta-faja reveal">
+      <h2>¿Listo para llevar tu negocio al siguiente nivel?</h2>
+      <p>Nuestro equipo está esperando tu llamada para empezar a construir la solución que tu empresa necesita.</p>
+      <a href="tel:59159864" class="btn btn-blanco">📞 Llámanos ahora</a>
+    </div>
+  </div>
+</section>
+
+<!-- ================= CONTACTO ================= -->
+<section class="seccion seccion-crema" id="contacto" style="padding-top:0">
+  <div class="contenedor">
+    <div class="encabezado reveal">
+      <span class="etiqueta">Contacto</span>
+      <h2>Hablemos de tu proyecto</h2>
+      <p>Comunícate con nosotros por teléfono, WhatsApp o déjanos un mensaje.</p>
+    </div>
+    <div class="contacto-grid">
+
+      <div class="reveal">
+        <div class="telefonos">
+          <a href="tel:54719486" class="telefono">
+            <div class="telefono-icono">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+            </div>
+            <div>
+              <small>Línea directa</small>
+              <strong>54719486</strong>
+            </div>
+          </a>
+          <a href="tel:59159864" class="telefono">
+            <div class="telefono-icono">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+            </div>
+            <div>
+              <small>Línea directa</small>
+              <strong>59159864</strong>
+            </div>
+          </a>
+        </div>
+        <a class="wa-btn" href="https://wa.me/59154719486?text=Hola%20D'%20Primera%20RY,%20me%20interesa%20un%20servicio" target="_blank" rel="noopener">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M17.47 14.38c-.3-.15-1.76-.87-2.03-.97-.27-.1-.47-.15-.67.15-.2.3-.77.97-.94 1.17-.17.2-.35.22-.64.07-.3-.15-1.26-.46-2.39-1.47-.88-.79-1.48-1.76-1.65-2.06-.17-.3-.02-.46.13-.61.14-.13.3-.35.45-.52.15-.17.2-.3.3-.5.1-.2.05-.37-.02-.52-.08-.15-.67-1.62-.92-2.22-.24-.58-.49-.5-.67-.51h-.57c-.2 0-.52.07-.8.37-.27.3-1.04 1.02-1.04 2.5 0 1.47 1.07 2.9 1.22 3.1.15.2 2.11 3.22 5.1 4.51.71.31 1.27.49 1.7.63.72.23 1.37.2 1.88.12.58-.09 1.76-.72 2.01-1.42.25-.7.25-1.29.17-1.42-.07-.13-.27-.2-.57-.35M12.05 21.79h-.01a9.87 9.87 0 0 1-5.03-1.38l-.36-.21-3.74.98 1-3.65-.24-.37a9.86 9.86 0 0 1-1.51-5.26c0-5.45 4.44-9.88 9.9-9.88a9.83 9.83 0 0 1 7 2.9 9.83 9.83 0 0 1 2.89 7c0 5.45-4.44 9.87-9.9 9.87M20.5 3.49A11.8 11.8 0 0 0 12.04 0C5.5 0 .16 5.34.16 11.89c0 2.1.55 4.14 1.59 5.95L.06 24l6.3-1.65a11.9 11.9 0 0 0 5.68 1.44h.01c6.55 0 11.89-5.33 11.89-11.89 0-3.18-1.24-6.16-3.44-8.41"/></svg>
+          Escríbenos por WhatsApp
+        </a>
+      </div>
+
+      <!-- Formulario: envía el mensaje directo a WhatsApp (sin backend) -->
+      <form class="form-card reveal" id="formContacto">
+        <h3>Envíanos un mensaje</h3>
+        <p>Completa el formulario y te contactaremos a la brevedad.</p>
+        <div class="campo">
+          <label for="nombre">Nombre completo *</label>
+          <input type="text" id="nombre" required placeholder="Tu nombre" />
+        </div>
+        <div class="campo">
+          <label for="servicio">Servicio de interés</label>
+          <select id="servicio">
+            <option>Desarrollo de Software a Medida</option>
+            <option>Sistemas de Análisis de Datos</option>
+            <option>Venta de Sistemas de Gestión</option>
+            <option>Mantenimiento y Soporte Técnico</option>
+            <option>Redes y Servidores</option>
+            <option>Servicios de Impresión</option>
+            <option>Otro / No estoy seguro</option>
+          </select>
+        </div>
+        <div class="campo">
+          <label for="mensaje">Mensaje *</label>
+          <textarea id="mensaje" required placeholder="Cuéntanos brevemente qué necesitas..."></textarea>
+        </div>
+        <button type="submit" class="btn btn-naranja" style="width:100%;justify-content:center">
+          Enviar mensaje
+        </button>
+        <p class="nota-form">Al enviar, se abrirá WhatsApp con tu mensaje listo.</p>
+      </form>
+
+    </div>
+  </div>
+</section>
+
+<!-- ================= FOOTER ================= -->
+<footer>
+  <div class="contenedor">
+    <div class="footer-grid">
+      <div>
+        <div class="footer-logo">
+          <img src="./assets/logo.png" style="height:40px">
+          <div class="logo-texto">D' Primera <span>RY</span> </div>
+        </div>
+        <p style="max-width:20rem">Servicios tecnológicos integrales para empresas y organizaciones. Calidad, confianza y compromiso en cada proyecto.</p>
+        <p class="slogan-footer">"Servicios tecnológicos de primera. Tu primera opción."</p>
+      </div>
+      <div>
+        <h4>Servicios</h4>
+        <ul>
+          <li><a href="#servicios">Desarrollo de software</a></li>
+          <li><a href="#servicios">Análisis de datos</a></li>
+          <li><a href="#servicios">Sistemas de gestión</a></li>
+          <li><a href="#servicios">Soporte técnico</a></li>
+          <li><a href="#servicios">Redes y servidores</a></li>
+          <li><a href="#servicios">Impresión</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Contacto</h4>
+        <ul>
+          <li><a href="tel:54719486">📞 54719486</a></li>
+          <li><a href="tel:59159864">📞 59159864</a></li>
+          <li><a href="https://wa.me/59154719486" target="_blank" rel="noopener">💬 WhatsApp</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-barra">
+      © <span id="anio"></span> D' Primera RY — Todos los derechos reservados.
+    </div>
+  </div>
+</footer>
+
+<!-- WhatsApp flotante -->
+<a class="wa-flotante" href="https://wa.me/59154719486" target="_blank" rel="noopener" aria-label="WhatsApp">
+  <svg width="28" height="28" viewBox="0 0 24 24" fill="#fff"><path d="M17.47 14.38c-.3-.15-1.76-.87-2.03-.97-.27-.1-.47-.15-.67.15-.2.3-.77.97-.94 1.17-.17.2-.35.22-.64.07-.3-.15-1.26-.46-2.39-1.47-.88-.79-1.48-1.76-1.65-2.06-.17-.3-.02-.46.13-.61.14-.13.3-.35.45-.52.15-.17.2-.3.3-.5.1-.2.05-.37-.02-.52-.08-.15-.67-1.62-.92-2.22-.24-.58-.49-.5-.67-.51h-.57c-.2 0-.52.07-.8.37-.27.3-1.04 1.02-1.04 2.5 0 1.47 1.07 2.9 1.22 3.1.15.2 2.11 3.22 5.1 4.51.71.31 1.27.49 1.7.63.72.23 1.37.2 1.88.12.58-.09 1.76-.72 2.01-1.42.25-.7.25-1.29.17-1.42-.07-.13-.27-.2-.57-.35M12.05 21.79h-.01a9.87 9.87 0 0 1-5.03-1.38l-.36-.21-3.74.98 1-3.65-.24-.37a9.86 9.86 0 0 1-1.51-5.26c0-5.45 4.44-9.88 9.9-9.88a9.83 9.83 0 0 1 7 2.9 9.83 9.83 0 0 1 2.89 7c0 5.45-4.44 9.87-9.9 9.87M20.5 3.49A11.8 11.8 0 0 0 12.04 0C5.5 0 .16 5.34.16 11.89c0 2.1.55 4.14 1.59 5.95L.06 24l6.3-1.65a11.9 11.9 0 0 0 5.68 1.44h.01c6.55 0 11.89-5.33 11.89-11.89 0-3.18-1.24-6.16-3.44-8.41"/></svg>
+</a>
+
+<script>
+/* ====== Cambia el código de país si es necesario ====== */
+const WHATSAPP_NUMERO = "59154719486"; // ej. Bolivia +591
+
+/* Header con sombra al hacer scroll */
+const header = document.getElementById('header');
+window.addEventListener('scroll', () => {
+  header.classList.toggle('scrolled', window.scrollY > 40);
+});
+
+/* Menú móvil */
+const hamburguesa = document.getElementById('hamburguesa');
+const navLinks = document.getElementById('navLinks');
+hamburguesa.addEventListener('click', () => {
+  hamburguesa.classList.toggle('abierto');
+  navLinks.classList.toggle('abierto');
+});
+navLinks.querySelectorAll('a').forEach(a =>
+  a.addEventListener('click', () => {
+    hamburguesa.classList.remove('abierto');
+    navLinks.classList.remove('abierto');
+  })
+);
+
+/* Animaciones de aparición al hacer scroll */
+const observer = new IntersectionObserver(entries => {
+  entries.forEach(e => e.isIntersecting && e.target.classList.add('visible'));
+}, { threshold: 0.15 });
+document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+/* Formulario → WhatsApp */
+document.getElementById('formContacto').addEventListener('submit', e => {
+  e.preventDefault();
+  const nombre = document.getElementById('nombre').value.trim();
+  const servicio = document.getElementById('servicio').value;
+  const mensaje = document.getElementById('mensaje').value.trim();
+  const texto = `Hola D' Primera RY, soy *${nombre}*.%0A%0A*Servicio de interés:* ${servicio}%0A%0A${encodeURIComponent(mensaje)}`;
+  window.open(`https://wa.me/${WHATSAPP_NUMERO}?text=${texto}`, '_blank');
+});
+
+/* Año actual en el footer */
+document.getElementById('anio').textContent = new Date().getFullYear();
+</script>
+
 </body>
 </html>
